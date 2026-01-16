@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>List Status</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .odd {
+            background-color: pink;
+        }
+
+        .even {
+            background-color: cyan;
+        }
+    </style>
 </head>
 
 <body>
-
+    <h2>GIÁ TRỊ CÁC THUỘC TÍNH TRẠNG THÁI</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>HỌ VÀ TÊN</th>
+                <th>Index</th>
+                <th>Count</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>Odd</th>
+                <th>Even</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="staff, st : ${list}" th:class="${st.odd} ? 'odd' : 'even'">
+                <td th:text="${#strings.capitalizeWords(staff.fullname)}"></td>
+                <td th:text="${st.index}"></td>
+                <td th:text="${st.count}"></td>
+                <td th:text="${st.first}"></td>
+                <td th:text="${st.last}"></td>
+                <td th:text="${st.odd}"></td>
+                <td th:text="${st.even}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
