@@ -15,9 +15,10 @@ public class StaffController {
     @RequestMapping("/detail")
     public String detail(Model model) {
         Staff staff = Staff.builder()
-                .id("user@gmail.com")
-                .fullname("nguyễn văn user")
+                .id("hungprokj@gmail.com")
+                .fullname("Đinh Duy Việt HÙng")
                 .level(2)
+                .birthday(new java.util.Date(2003 - 1900, 7 - 1, 10))
                 .build();
         model.addAttribute("staff", staff);
         return "staff-detail";
