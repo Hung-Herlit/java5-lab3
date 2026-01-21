@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lab.lab3.entity.Staff;
 
 import java.util.List;
+import java.util.Calendar;
 
 @Controller
 @RequestMapping("/staff")
@@ -14,11 +15,13 @@ public class StaffController {
 
     @RequestMapping("/detail")
     public String detail(Model model) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2003, Calendar.AUGUST, 10);
         Staff staff = Staff.builder()
                 .id("hungprokj@gmail.com")
                 .fullname("Đinh Duy Việt HÙng")
                 .level(2)
-                .birthday(new java.util.Date(2003 - 1900, 7 - 1, 10))
+                .birthday(calendar.getTime())
                 .build();
         model.addAttribute("staff", staff);
         return "staff-detail";
